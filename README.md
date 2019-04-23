@@ -2,17 +2,17 @@
 <a href="http://laravel.com">Base Framework</a><br/>
 <a href="https://demos.creative-tim.com/argon-dashboard/">Dashboard Template</a>
 <br/>
-
-Fitur 
-A. Mahasiswa
-  -> Ngajuin Judul
-B. Dosen
-  -> Melihat daftar mahasiswa bimbingan
-  -> Ngedit judul mahasiswa bimbingan (otw)
-C. Kaprodi
-  -> Mengelola judul 
-    -> Memberikan Dospem (otw)
-    -> Ngasih tau status judul ( ditolak/diterima) (otw)
-D. Admin
-  -> Mengelola judul (CRUD judul) (otw)
+<br/>
+Fitur<br/> 
+A. Mahasiswa<br/>
+  -> Ngajuin Judul<br/>
+B. Dosen<br/>
+  -> Melihat daftar mahasiswa bimbingan<br/>
+  -> Ngedit judul mahasiswa bimbingan (otw)<br/>
+C. Kaprodi<br/>
+  -> Mengelola judul <br/>
+    -> Memberikan Dospem (otw)<br/>
+    -> Ngasih tau status judul ( ditolak/diterima) (otw)<br/>
+D. Admin<br/>
+  -> Mengelola judul (CRUD judul) (otw)<br/>
   -> Mengelola User (CRUD, Role User)
