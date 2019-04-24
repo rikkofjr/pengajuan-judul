@@ -40,6 +40,9 @@ Route::resource('dashboard/category','CatController');
 //judul
 Route::resource('dashboard/judul', 'JudulController');
 
+//Dosen
+Route::get('dashboard/bimbingan', 'DosenController@daftarbimbingan');
+
 //datatable controller
 Route::get('datatable/judulmahasiswa', 'DatatableController@judulmahasiswa');
 Route::get('cobain', 'DatatableController@cobain');

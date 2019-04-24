@@ -31,6 +31,7 @@
                                     <td>dp_1</td>
                                     <td>dp_2</td>
                                     <td>st_judul</td>
+                                    <td>Act</td>
                                  </tr>
                             </thead>
                             <?php $no = 1;?>
@@ -45,6 +46,10 @@
                                     <td>{{ $jdl->dp_1nya->name }}</td>
                                     <td>{{ $jdl->dp_2nya->name }}</td>
                                     <td>{{ $jdl->st_judul }}</td>
+                                    <td>
+                                        <button type="button" onclick="window.location.href='/dashboard/judul/{{$jdl->id_judul}}/edit'" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-eye"></i></button>
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -59,9 +64,10 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 @endsection
 @push('script-dynamic')
+<script type="text/javascript" charset="utf8" src="{{ asset('js/lib/jquery.dataTables.js') }}"></script>
+
 <script>
     $(document).ready( function () {
         $('#judultable').DataTable({

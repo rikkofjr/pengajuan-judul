@@ -118,7 +118,7 @@ class UserController extends Controller
             'name'=>'required|max:120',
             'username'=>'required|unique:users,username,'.$id,
             'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
+           // 'password'=>'required|min:6|confirmed'
         ]);
         $input = $request->only(['name', 'username', 'email', 'password']); //Retreive the name, email and password fields
         $roles = $request['roles']; //Retreive all roles

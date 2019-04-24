@@ -21,8 +21,8 @@
     <link href="{{ asset('css/argon.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/lib/datatable/jquery.dataTables.css') }}">
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" charset="utf8" src="{{ asset('js/lib/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

@@ -1,103 +1,49 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-    <title>Laravel 5.8 Datatables Tutorial - ItSolutionStuff.com</title>
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-</head>
-
-<body>
-
-    
-
 <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
 
-    <h1>Laravel 5.8 Datatables Tutorial <br/> HDTuto.com</h1>
+        <div class="panel panel-default">
+          <div class="panel-heading panel-title">Role Assignments</div>
+          <div class="panel-body">
 
-    <table class="table table-bordered data-table">
+            <p>Available roles:</p>
+            @foreach($roles as $r)
+              @if($r->name == 'Member')
+                @continue
+              @endif
+              <ul class="listBox">
+                <li>{{$r->name}}
+                  <ul class="listBox">
+                    @foreach ($r->users as $u)
+                      <li>{{$u->name}}</li>
+                    @endforeach
+                  </ul>
+                </li>
+              </ul>
+            @endforeach
+          </div>
+        </div>
+      </div>
 
-        <thead>
+      <div class="col-md-5">
+        <div class="panel panel-default">
+          <div class="panel-heading panel-title">Role Assignments</div>
+          <div class="panel-body">
+            <p>Users WITHOUT "Member" role:</p>
+            <ul class="listBox">
+              @foreach($nonmembers as $u)
+                <li><a href="/members/{{ $u->id }}">{{ $u->name }}</a> ({{ $u->weekend }})</li>
+              @endforeach
+            </ul>
+            <ul class="listBox">
+              @foreach($dosen as $dsn)
+                <li><a href="/members/{{ $dsn->id }}">{{ $dsn->name }}</a> ({{ $u->weekend }})</li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
 
-            <tr>
 
-                <th>No</th>
-
-                <th>Judul</th>
-
-                <th>nama</th>
-
-                <th width="100px">Action</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-        </tbody>
-
-    </table>
-
-</div>
-
-   
-
-</body>
-
-   
-
-<script type="text/javascript">
-
-  $(function () {
-
-    
-
-    var table = $('.data-table').DataTable({
-
-        processing: true,
-
-        serverSide: true,
-
-        ajax: "{{ route('ini.coba') }}",
-
-        columns: [
-
-            {data: 'id_judul', name: 'id_judul'},
-
-            {data: 'judul', name: 'judul'},
-
-            {data: 'user_judul', name: 'user_judul'},
-
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-
-        ]
-
-    });
-
-    
-
-  });
-
-</script>
-
-</html>
+      </div>
+    </div>
+  </div>

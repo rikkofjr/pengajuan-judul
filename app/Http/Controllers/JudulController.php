@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Judul;
+use Spatie\Permission\Models\Role;
 use Session;
 use Auth;
 use Datatables;
@@ -85,9 +86,11 @@ class JudulController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_judul)
     {
-        //
+        $judul = Judul::where('id_judul', $id_judul)->first(); //Find post of id = $id
+
+        return view ('judul.show', compact('judul'));
     }
 
     /**
@@ -96,9 +99,13 @@ class JudulController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_judul)
     {
-        //
+        $judul = Judul::where('id_judul', $id_judul)->first(); //Find post of id = $id
+        
+        $dosen = User::role('Dosen')->get(); //Find post of id = $id
+
+        return view ('judul.edit', compact('judul', 'dosen'));
     }
 
     /**
