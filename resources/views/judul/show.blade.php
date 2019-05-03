@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', '| View Post')
+@section('title')
+    {{$judul->judul}}
+@endsection
 
 @section('content')
 <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
@@ -21,20 +23,26 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header bg-transparent">
-                    <h1 class="text-dark">{{ $post->title }}</h1>
+                    <h1 class="text-dark">{{ $judul->judul }}</h1>
                 </div>
                 <div class="card-body">
-                    <p class="lead">{{ $post->isi }} </p>
+                    <p class="lead">{{ $judul->latar_belakang }} </p><br/>
+                    @if($judul->st_judul == 1)
+                        <div class="btn btn-danger btn-sm">{{$judul->st_judulnya->name_st_judul}}</div>
+                    @endif
+                    @if($judul->st_judul == 2)
+                        <div class="btn btn-success btn-sm">{{$judul->st_judulnya->name_st_judul}}</div>
+                    @endif
                 </div>
                 <div class="card-footer">
-                    <h5 class="text-dark">{{ $post->users->name }}</h5>
+                    <h5 class="text-dark">{{ $judul->tb_users->name }}</h5>
                 </div>
             </div>
         </div>
     </div>
 
     <hr>
-    {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id] ]) !!}
+    {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $judul->id] ]) !!}
     <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
     
     @can('Delete Post')
@@ -42,8 +50,8 @@
     @endcan
     {!! Form::close() !!}
     
-    @hasrole('Admin')
-    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info" role="button">Edit</a>
+    @hasrole('Admin Prodi')
+    <a href="/dashboard/judul/{{ $judul->id_judul }}/edit" class="btn btn-info" role="button">Edit</a>
     @endhasrole
 
 </div>

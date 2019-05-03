@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2019 at 01:26 PM
+-- Generation Time: May 03, 2019 at 06:11 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -75,6 +75,9 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
 (2, 'App\\Models\\User', 2),
+(3, 'App\\Models\\User', 2),
+(3, 'App\\Models\\User', 3),
+(3, 'App\\Models\\User', 4),
 (4, 'App\\Models\\User', 5),
 (4, 'App\\Models\\User', 8),
 (4, 'App\\Models\\User', 11);
@@ -164,6 +167,26 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_jenis_judul`
+--
+
+CREATE TABLE `tb_jenis_judul` (
+  `id_jenis_judul` int(11) NOT NULL,
+  `jenis_judul` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_jenis_judul`
+--
+
+INSERT INTO `tb_jenis_judul` (`id_jenis_judul`, `jenis_judul`) VALUES
+(1, 'Pengembangan'),
+(2, 'Pemanfaatan'),
+(3, 'Analisis');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_judul`
 --
 
@@ -187,16 +210,24 @@ CREATE TABLE `tb_judul` (
 INSERT INTO `tb_judul` (`id_judul`, `judul`, `latar_belakang`, `jenis_penelitian`, `dp_1`, `dp_2`, `user_judul`, `st_judul`, `created_at`, `updated_at`) VALUES
 (1, 's', 's', '1', '0', '0', '1', '0', '2019-04-02 06:40:07', '2019-04-02 06:40:07'),
 (2, 'ini judul 2', 'ini latar', '2', '0', '0', '1', '0', '2019-04-05 08:14:27', '2019-04-05 08:14:27'),
-(3, 'Ini Judul Lagi', 'latab', '2', '0', '4', '1', '0', '2019-04-05 17:36:44', '2019-04-05 17:36:44'),
-(4, 'Judul Lagi', 'Lagi Lagi', '3', '0', '0', '1', '0', '2019-04-05 23:59:44', '2019-04-05 23:59:44'),
-(5, 'haahh', 'adawdad', '2', '3', '0', '1', '0', '2019-04-05 23:59:57', '2019-04-05 23:59:57'),
+(3, 'ini judul jenal', 'latabara', '2', '3', '4', '1', '1', '2019-04-05 17:36:44', '2019-04-27 01:47:31'),
+(4, 'Judul Lagi', 'Lagi Lagi', '3', '3', '2', '1', '1', '2019-04-05 23:59:44', '2019-04-24 22:19:44'),
+(5, 'haahh', 'adawdad', '2', '3', '2', '1', '1', '2019-04-05 23:59:57', '2019-04-27 00:49:11'),
 (6, 'lagi', 'ladawd', '3', '0', '0', '1', '0', '2019-04-06 00:00:14', '2019-04-06 00:00:14'),
-(7, 'wewa', 'awdadad', '1', '4', '0', '1', '0', '2019-04-06 00:00:30', '2019-04-06 00:00:30'),
+(7, 'wewa', 'awdadad', '1', '4', '2', '1', '2', '2019-04-06 00:00:30', '2019-04-24 22:13:35'),
 (8, 'abc', 'awad', '2', '0', '3', '1', '0', '2019-04-06 00:00:47', '2019-04-06 00:00:47'),
 (9, 'aedad', 'awdada', '1', '0', '0', '1', '0', '2019-04-06 00:00:58', '2019-04-06 00:00:58'),
 (10, 'awdaw', 'awdwadawd', '1', '0', '0', '1', '0', '2019-04-06 00:01:15', '2019-04-06 00:01:15'),
-(11, 'awda', 'awdawdaw', '2', '0', '0', '1', '0', '2019-04-06 00:01:33', '2019-04-06 00:01:33'),
-(12, 'ini judu lagi', 'kupret', '2', '0', '0', '1', '0', '2019-04-17 20:18:34', '2019-04-17 20:18:34');
+(11, 'awda', 'awdawdaw', '2', '4', '0', '1', '0', '2019-04-06 00:01:33', '2019-04-06 00:01:33'),
+(12, 'ini judu lagi', 'kupret', '2', '0', '0', '6', '0', '2019-04-17 20:18:34', '2019-04-17 20:18:34'),
+(13, 'Ini Judul Kaprodi', 'Ini latar belakangnya', '2', '0', '0', '2', '0', '2019-04-25 03:50:25', '2019-04-25 03:50:25'),
+(14, 'aldhakh', 'kahdkahd', '1', '0', '0', '2', '0', '2019-04-25 04:14:07', '2019-04-25 04:14:07'),
+(15, 'PENGEMBANGAN MEDIA VIDEO ANIMASI UNTUK MENINGKATKAN HASIL BELAJAR SISWA DALAM PELAJARAN MATEMATIKA SUB POKOK BAHASAN HUBUNGAN ANTAR SUDUT KELAS VII SMP NEGERI 1 KREMBUNG SIDOARJO', 'Perkembangan pesat di bidang teknologi informasi dan komunikasi saat ini dilandasi oleh perkembangan matematika di bidang aljabar, analisis, dan matematika diskrit. Hubungan antar sudut pada mata pelajaran matematika SMP Kelas VII mengaharuskan siswa untuk menerapkan berbagai konsep dan sifat-sifat terkait garis dan sudut dalam pembuktian matematis serta pemecahan masalah nyata. Dalam hal ini video animasi merupakan media pembelajaran yang tepat untuk membantu siswa dalam meningkatkan hasil belajar. Pengembangan media video animasi ini bertujuan untuk mengetahui pengaruh media video animasi dalam meningkatkan hasil belajar siswa kelas VII SMP Negeri 1 Krembung Sidoarjo.\r\nModel dan prosedur pengembangan yang digunakan yaitu R&D Borg and Gall. Dalam pelaksanaan uji coba dilakukan beberapa tahap, yaitu: review dengan ahli materi dan ahli media, evaluasi dengan uji coba perorangan, uji coba kelompok kecil, dan uji coba kelompok besar dan untuk mengetahui peningkatan hasil belajar dilakukan uji coba pada kelas eksperimen dan kelas kontrol. Data kelas eksperimen dan kelas kontrol dihitung menggunakan rumus uji T.\r\nHasil uji coba kepada dua ahli materi yaitu 69,75% dan uji coba kepada dua ahli media yaitu 84,7%. Sedangkan hasil uji coba perorangan yaitu 86,1%, uji coba kelompok kecil yaitu 84,1%, dan uji coba kelompok besar yaitu 86,4%. Data hasil uji T diperoleh 1,66 < 6, maka hasil tersebut menunjukkan peningkatan hasil belajar.', '1', '2', '3', '2', '2', '2019-04-25 05:12:02', '2019-04-27 01:14:18'),
+(16, 'Pengembangan lobang 2 jari', 'Perkembangan pesat di bidang teknologi informasi dan komunikasi saat ini dilandasi oleh perkembangan matematika di bidang aljabar, analisis, dan matematika diskrit. Hubungan antar sudut pada mata pelajaran matematika SMP Kelas VII mengaharuskan siswa untuk menerapkan berbagai konsep dan sifat-sifat terkait garis dan sudut dalam pembuktian matematis serta pemecahan masalah nyata. Dalam hal ini video animasi merupakan media pembelajaran yang tepat untuk membantu siswa dalam meningkatkan hasil belajar. Pengembangan media video animasi ini bertujuan untuk mengetahui pengaruh media video animasi dalam meningkatkan hasil belajar siswa kelas VII SMP Negeri 1 Krembung Sidoarjo.\r\n\r\nModel dan prosedur pengembangan yang digunakan yaitu R&D Borg and Gall. Dalam pelaksanaan uji coba dilakukan beberapa tahap, yaitu: review dengan ahli materi dan ahli media, evaluasi dengan uji coba perorangan, uji coba kelompok kecil, dan uji coba kelompok besar dan untuk mengetahui peningkatan hasil belajar dilakukan uji coba pada kelas eksperimen dan kelas kontrol. Data kelas eksperimen dan kelas kontrol dihitung menggunakan rumus uji T.\r\n\r\nHasil uji coba kepada dua ahli materi yaitu 69,75% dan uji coba kepada dua ahli media yaitu 84,7%. Sedangkan hasil uji coba perorangan yaitu 86,1%, uji coba kelompok kecil yaitu 84,1%, dan uji coba kelompok besar yaitu 86,4%. Data hasil uji T diperoleh 1,66 < 6, maka hasil tersebut menunjukkan peningkatan hasil belajar.', '1', '0', '0', '2', '0', '2019-04-25 05:13:07', '2019-04-25 05:13:07'),
+(17, 'abc', 'abc latb', '3', '0', '0', '6', '0', '2019-04-25 18:58:15', '2019-04-25 18:58:15'),
+(18, 'lasido', 'latlasido', '2', '0', '0', '6', '0', '2019-04-25 19:00:29', '2019-04-25 19:00:29'),
+(19, 'adwawadwad', 'awdwada', '1', '0', '0', '6', '0', '2019-04-25 19:20:24', '2019-04-25 19:20:24'),
+(20, 'Pembuatan E-learning untuk mahasiswa yang belom jadi mahasiswa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n<br/>\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n<br/>\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n<br/>\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2', '0', '0', '11', '0', '2019-04-27 05:43:37', '2019-04-27 05:43:37');
 
 -- --------------------------------------------------------
 
@@ -213,6 +244,27 @@ CREATE TABLE `tb_posts` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_st_judul`
+--
+
+CREATE TABLE `tb_st_judul` (
+  `id_st_judul` int(2) NOT NULL,
+  `name_st_judul` text NOT NULL,
+  `keterangan_st_judul` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_st_judul`
+--
+
+INSERT INTO `tb_st_judul` (`id_st_judul`, `name_st_judul`, `keterangan_st_judul`) VALUES
+(0, '-', 'Judul masuk dan belum memiliki status'),
+(1, 'Ditolak', 'Judul ditolak oleh prodi'),
+(2, 'Diterima', 'Judul diterima & mahasiswa dapat bimbingan');
 
 -- --------------------------------------------------------
 
@@ -237,12 +289,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(0, '-', '-', '-', NULL, '$2y$10$qWP864toyciXoJ4WWXd0cOtR2JKWs/2MfM6IUX./mDFTxVjVmMCba', NULL, '2019-04-05 06:38:29', '2019-04-05 06:59:20'),
+(0, '-', '-', 'm@a.as', NULL, '$2y$10$1mluWqNsDYcC92KFR12ZGOdc/UkifBA5GRGbyfOwWugeleZs6cp/a', NULL, '2019-04-05 06:38:29', '2019-04-24 18:20:02'),
 (1, 'Admin Prodi', 'prodi', 'admin@bladephp.co', NULL, '$2y$10$qWP864toyciXoJ4WWXd0cOtR2JKWs/2MfM6IUX./mDFTxVjVmMCba', NULL, '2019-04-05 06:38:29', '2019-04-05 06:59:20'),
-(2, 'Kaprodi', 'kaprodi', 'prodi@pro.di', NULL, '$2y$10$Abxct.D5SLFjIgi/DCvLuelr7KPYBTsQCiwqrczH38D6VMq1oOfMC', NULL, '2019-04-05 07:01:43', '2019-04-05 07:09:15'),
+(2, 'Kaprodi', 'kaprodi', 'prodi@pro.di', NULL, '$2y$10$qWP864toyciXoJ4WWXd0cOtR2JKWs/2MfM6IUX./mDFTxVjVmMCba', NULL, '2019-04-05 07:01:43', '2019-04-24 00:45:29'),
 (3, 'Dosen Satu', 'dosen1', 'dosen@dos.go', NULL, '$2y$10$GbcpIeIfUxUEVdB.mOKyHO7QAw1tfv4XSRtmSKvsnnOZvqtjKmZpC', NULL, '2019-04-05 07:20:31', '2019-04-05 07:20:31'),
 (4, 'Dosen Dua', 'Dosen2', 'dosen2@dos.go', NULL, '$2y$10$SS7GyKYec4X8msN.ek1mSe0vgx92iP0ykk4DXb2MEEbOxx6qweBjO', NULL, '2019-04-05 07:21:42', '2019-04-05 07:21:42'),
-(5, 'Mahasiswa Satu', 'mahasiswa1', 'mahasiswa@ma.go', NULL, '$2y$10$iVJSIWY9oLA.kD.kYXZUEOakTHEOg9nfaZy9Pw0Ef1hGyhwDzel6K', NULL, '2019-04-05 07:22:14', '2019-04-05 07:22:56'),
+(5, 'Mahasiswa Satu', 'mahasiswa1', 'mahasiswa@ma.go', NULL, '$2y$10$BuzCAOZQdLEiYTo3qDXJWO1zcjjR.GwWLT7H3/BmnKHB9o6Rd0Qva', NULL, '2019-04-05 07:22:14', '2019-04-22 16:53:17'),
 (6, 'Mahasiswa Dua', 'mahasiswa2', 'mahasiswa2@ma.go', NULL, '$2y$10$NaGpR26Pg7hJ9AY0bWo3T.LGQWIZzEQwx/ot4bud1W5xPHD82arXS', NULL, '2019-04-05 07:29:20', '2019-04-05 07:29:20'),
 (7, 'Mahasiswa Tiga', 'mahasiswa3', 'mahasiswa3@ma.go', NULL, '$2y$10$JP1PnahPy.N4fD70tFVf3eAMKFNfvaEqYBJU1VjllxZIQ0vwU2R7y', NULL, '2019-04-05 07:34:07', '2019-04-05 07:34:07'),
 (8, 'Mahasiswa Empat', 'mahasiswa4', 'mahasiswa4@ma.go', NULL, '$2y$10$4t.XcuFUGkQ3em7OYeKJMeA2RBA.QBRhMiZuidLPNWUN436luAXBu', NULL, '2019-04-05 07:39:34', '2019-04-05 07:39:34'),
@@ -304,6 +356,12 @@ ALTER TABLE `tb_judul`
   ADD PRIMARY KEY (`id_judul`);
 
 --
+-- Indexes for table `tb_st_judul`
+--
+ALTER TABLE `tb_st_judul`
+  ADD PRIMARY KEY (`id_st_judul`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -336,7 +394,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tb_judul`
 --
 ALTER TABLE `tb_judul`
-  MODIFY `id_judul` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_judul` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`

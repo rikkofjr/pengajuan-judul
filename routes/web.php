@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('/', 'PostController@index');
 Route::get('/home', 'PostController@index');
 Route::get('/dashboard', 'PostController@index');
+Route::get('/jumlah/judul', 'JudulController@hitungjudul');
 Route::get('/postsid/{id}', 'PostController@show');
 Route::get('/postsby/{usernya}', 'IndexController@postsby');
 Route::get('/postcat/{categorynya}', 'IndexController@postcat');
@@ -31,7 +32,6 @@ Route::resource('dashboard/roles', 'RoleController');
 Route::resource('dashboard/permissions', 'PermissionController');
 
 //posts
-Route::get('dashboard/judul/myjudul', 'JudulController@myjudul');
 Route::resource('dashboard/posts', 'PostController');
 
 //Category
@@ -39,9 +39,17 @@ Route::resource('dashboard/category','CatController');
 
 //judul
 Route::resource('dashboard/judul', 'JudulController');
+Route::get('dashboard/myjudul', 'JudulController@myjudul');
+Route::get('dashboard/judulditerima', 'JudulController@jditerima');
+Route::get('dashboard/judulditolak', 'JudulController@jditolak');
+Route::get('dashboard/judultanpastatus', 'JudulController@jdtps');
+
 
 //Dosen
 Route::get('dashboard/bimbingan', 'DosenController@daftarbimbingan');
+
+//profile
+Route::get('dashboard/profile', 'ProfileController@username');
 
 //datatable controller
 Route::get('datatable/judulmahasiswa', 'DatatableController@judulmahasiswa');

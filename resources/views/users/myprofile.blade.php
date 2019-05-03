@@ -1,34 +1,41 @@
-{{-- \resources\views\users\create.blade.php --}}
 @extends('layouts.app')
 
-@section('title', '| Profile')
+@section('title')
+  ini judul
+@endsection
 
 @section('content')
-    
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-        <div class="container-fluid">
-            <div class="header-body">
-                <!-- Card stats -->
-                <div class="row">
-                    <h1 class="text-white"><i class="fa fa-user-plus"></i> Add User</h1>
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    @if(Session::has('flash_message'))
+                        <div class="alert alert-success"><em> {!! session('flash_message') !!}</em> </div>
+                    @endif 
                 </div>
             </div>
         </div>
     </div>
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-      <!-- Mask -->
-      <span class="mask bg-gradient-default opacity-8"></span>
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
-            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-            <a href="#!" class="btn btn-info">Edit profile</a>
-          </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <
+                </div>
+                <div class="card-body">
+                   
+                </div>
+                <div class="card-footer">
+                    <
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="container-fluid mt--7">
-        ini profile
-    </div>
+
+    <hr>
+</div>
+
+@endsection

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Judul;
+use App\Models\StJudul;
 use Spatie\Permission\Models\Role;
 use Session;
 use Auth;
 use Datatables;
+use DB;
 
 class JudulController extends Controller
 {
@@ -22,19 +24,18 @@ class JudulController extends Controller
      */
     public function index()
     {
-        $judulnya = Judul::orderby('id_judul', 'desc')->get(); 
-        return view('judul.index', compact  ('judulnya'));
+        $judul = Judul::orderby('id_judul', 'desc')->get(); 
+        return view('judul.index', compact  ('judul'));
     }
     
     //judul per user
     
      public function myjudul()
     {
-        
-        $judul=Judul::orderby('id_judul', 'desc')
-            ->where(['user_judul'=>Auth::user()->id])
-            ->paginate(5);
-        return view('judul.myjudul', compact('judul'));
+        $user = Auth::user();
+        $judul = Judul::where('user_judul', $user->id)
+        ->orderby('id_judul', 'desc')->get(); 
+        return view('judul.myjudul', compact  ('judul'));
 
     }
 
@@ -77,7 +78,7 @@ class JudulController extends Controller
         $judul->save();
         
         return redirect()->route('judul.index')
-            ->with('flash_message', 'Judul,'.$judul->judul. 'telah dibuat');
+            ->with('flash_message', 'Judul, '.$judul->judul. 'telah dibuat');
     }
 
     /**
@@ -103,21 +104,62 @@ class JudulController extends Controller
     {
         $judul = Judul::where('id_judul', $id_judul)->first(); //Find post of id = $id
         
-        $dosen = User::role('Dosen')->get(); //Find post of id = $id
+        $dosen = User::role('Dosen')->get(); //Find User Where Role
+        $st_judul = StJudul::orderby('id_st_judul', 'desc')->get(); //Find User Where Role
 
-        return view ('judul.edit', compact('judul', 'dosen'));
+        //orang ygn boleh ngedit
+        $adminrole = Auth::user()->hasAnyRole('Admin Prodi', 'Kaprodi');
+        $dosen1 = Auth::user()->id == $judul->dp_1;
+        $dosen2 = Auth::user()->id == $judul->dp_2;
+        //$punyasaya = Auth::user()->id == $judul->user_judul;
+
+        //$user0 = User::where('id', '=', '0');
+        if( $adminrole || $dosen1 || $dosen2 ){
+            return view ('judul.edit', compact('judul', 'dosen', 'st_judul'));
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $id_judul
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_judul)
     {
-        //
+        $user = Auth::user();
+        if($user->hasRole('Admin Prodi')){
+            $this->validate($request, [
+                'judul'=>'required'
+            ]);
+
+            $post = Judul::findOrFail($id_judul);
+            $post->judul = $request->input('judul');
+            $post->latar_belakang = $request->input('latar_belakang');
+            $post->dp_1 = $request->input('dp_1');
+            $post->dp_2 = $request->input('dp_2');
+            $post->st_judul = $request->input('st_judul');
+            $post->save();
+
+            return redirect()->route('judul.show', 
+                $post->id_judul)->with('flash_message', 
+                'Article, '. $post->judul.' updated');
+       }
+        if($user->hasRole('Dosen')){
+            $this->validate($request, [
+                'judul'=>'required'
+            ]);
+
+            $post = Judul::findOrFail($id_judul);
+            $post->judul = $request->input('judul');
+            $post->latar_belakang = $request->input('latar_belakang');
+            $post->save();
+
+            return redirect()->route('judul.show', 
+                $post->id_judul)->with('flash_message', 
+                'Article, '. $post->judul.' updated');
+       }
     }
 
     /**
@@ -129,5 +171,30 @@ class JudulController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function jditerima(){
+        $judul = Judul::where('st_judul', '2')
+        ->orderby('id_judul', 'desc')->get(); 
+        return view('judul.index', compact  ('judul'));
+    }
+    public function jditolak(){
+        $judul = Judul::where('st_judul', '1')
+        ->orderby('id_judul', 'desc')->get(); 
+        return view('judul.index', compact  ('judul'));
+    }
+    public function jdtps(){
+        $judul = Judul::where('st_judul', '0')
+        ->orderby('id_judul', 'desc')->get(); 
+        return view('judul.index', compact  ('judul'));
+    }
+    public function hitungjudul(){
+        $hitungjudul = Judul::select(DB::raw('jenis_penelitian, count(id_judul) as total')) 
+        ->groupby('jenis_penelitian') 
+        ->orderby('jenis_penelitian','asc') ->get();
+        
+        $hitungst = Judul::select(DB::raw('st_judul, count(id_judul) as totalst')) 
+        ->groupby('st_judul') 
+        ->orderby('st_judul','asc') ->get();
+        return view('dashboardindex', compact ('hitungjudul', 'hitungst'));
     }
 }

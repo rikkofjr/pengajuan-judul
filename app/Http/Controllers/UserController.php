@@ -83,9 +83,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
-         return redirect('users'); 
+        return view('users.myprofile'); 
     }
 
     /**

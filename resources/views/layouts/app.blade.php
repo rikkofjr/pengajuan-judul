@@ -15,7 +15,6 @@
     <!-- Styles -->
     
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/select2/select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/argon.min.css') }}" rel="stylesheet">
@@ -42,8 +41,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Brand -->
-                <a class="navbar-brand pt-0" href="./index.html">
-                    <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+                <a class="navbar-brand pt-0" href="dashboard">
+                    <img src="{{ asset('img/brand/logo.png') }}" class="navbar-brand-img" alt="..."> Pengajuan Judul
                 </a>
                 <!-- User -->
                 <ul class="nav align-items-center d-md-none">
@@ -123,6 +122,8 @@
                                 <i class="fas fa-home"></i> Dashboard
                             </a>
                         </li>
+                        @hasrole('Admin Prodi')
+                        <!-- Navbar utk admin prodi--->
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-book"></i> Post
@@ -135,51 +136,71 @@
                                     <a class="dropdown-item" href="#">category</a>
                             </div>
                         </li>
-                        @hasrole('Admin Prodi')
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user"></i> User
                             </a>
                             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                                <a class="dropdown-item" href="/dashboard/users/">All Post</a>
-                                <a class="dropdown-item" href="/dashboard/users/create">Create Post</a>
-                                <a class="dropdown-item" href="/dashboard/posts/myposts/">My Post</a>
+                                <a class="dropdown-item" href="/dashboard/users/">Mahasiswa</a>
+                                <a class="dropdown-item" href="/dashboard/users/create">Tambah Mahasiswa</a>
                                 <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/dashboard/roles">Roles</a>
                                     <a class="dropdown-item" href="/dashboard/permmisions">Permmisions</a>
                             </div>
                         </li>
                         @endrole
+                        @hasrole('Admin Prodi||Kaprodi')
                         <li class="nav-item">
-                            <a class="nav-link" href="./examples/icons.html">
-                                <i class="ni ni-planet text-blue"></i> Icons
+                            <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                                <i class="fas fa-book"></i>
+                                <span class="nav-link-text">Judul</span>
                             </a>
+
+                            <div class="collapse" id="navbar-examples">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dashboard/judulditerima">Diterima</a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="/dashboard/judulditolak">Ditolak</a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="/dashboard/judultanpastatus">Tanpa Status</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./examples/maps.html">
-                                <i class="ni ni-pin-3 text-orange"></i> Maps
+                        @endrole
+                        @hasrole('Dosen||Kaprodi')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/bimbingan">
+                                    <i class="fas fa-users"></i> Bimbingan
+                                </a>
+                            </li>
+                        @endrole
+                        @hasrole('Mahasiswa')
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#judul-mahasiswa" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="judul-mahasiswa">
+                                <i class="fas fa-book"></i>
+                                <span class="nav-link-text">Judul</span>
                             </a>
+
+                            <div class="collapse" id="judul-mahasiswa">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dashboard/judul/create">Pengajuan Judul</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dashboard/myjudul">Judul Saya</a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="/dashboard/judul/">Semua Judul</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./examples/profile.html">
-                                <i class="ni ni-single-02 text-yellow"></i> User profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./examples/tables.html">
-                                <i class="ni ni-bullet-list-67 text-red"></i> Tables
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./examples/login.html">
-                                <i class="ni ni-key-25 text-info"></i> Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./examples/register.html">
-                                <i class="ni ni-circle-08 text-pink"></i> Register
-                            </a>
-                        </li>
+                        @endrole
                     </ul>
                 </div>
             </div>
@@ -212,23 +233,16 @@
                             <div class=" dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Welcome!</h6>
                             </div>
-                            <a href="../examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
+                            <a href="/dashboard/myjudul" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                <span>Judul</span>
                             </a>
-                            <a href="../examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span>Settings</span>
-                            </a>
-                            <a href="../examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="../examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-support-16"></i>
-                                <span>Support</span>
+                            <a href="/dashboard/profile/editpassword" class="dropdown-item">
+                                <i class="fas fa-key"></i>
+                                <span>Edit Password</span>
                             </a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt "></i>
                                 <span>Logout</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -241,7 +255,6 @@
             </div>
         </nav>
         @yield('content')
-
     </div>
 
 
