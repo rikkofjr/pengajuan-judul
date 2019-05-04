@@ -43,21 +43,6 @@
                 </div>
             </div> 
             @endforeach   
-               
-            <!--<div class="col col-md-12"> 
-               @foreach ($hitungjudul as $htj) 
-                {{$htj->jenis_judulnya->jenis_judul}} 
-                - {{$htj->total}} 
-                <br> 
-                @endforeach
-
-                @foreach ($hitungst as $htstj) 
-                {{$htstj->st_judulnya->name_st_judul}} 
-                - {{$htstj->totalst}} 
-                <br> 
-                @endforeach
-            </div>!-->
-            
         </div>
         <div class="row">
             @foreach ($hitungjudul as $htj)  
@@ -87,6 +72,8 @@
             </div> 
             @endforeach
         </div>
+    </div>
+    <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
                 <div class="card shadow card-shadow">
