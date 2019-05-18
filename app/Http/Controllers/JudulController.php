@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Judul;
 use App\Models\StJudul;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 use Session;
 use Auth;
 use Datatables;
@@ -195,6 +196,9 @@ class JudulController extends Controller
         $hitungst = Judul::select(DB::raw('st_judul, count(id_judul) as totalst')) 
         ->groupby('st_judul') 
         ->orderby('st_judul','asc') ->get();
-        return view('dashboardindex', compact ('hitungjudul', 'hitungst'));
+
+        $judulnya = Judul::orderby('id_judul', 'desc')->take(5)->get(); 
+
+        return view('dashboardindex', compact ('hitungjudul', 'hitungst', 'judulnya'));
     }
 }

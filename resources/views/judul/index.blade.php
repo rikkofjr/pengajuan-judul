@@ -26,7 +26,7 @@
                         @endhasanyrole
                     </div>
                         <div class="card-body table-responsive">
-                            <table id="judultable" class="table table-bordered">
+                            <table id="judultable" class="table table-bordered" style="max-width:300px;">
                             <thead>
                                  <tr>
                                     <td>#</td>

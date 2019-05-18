@@ -16,7 +16,7 @@ Auth::routes();
 //front End Page
 Route::get('/', 'PostController@index');
 Route::get('/home', 'PostController@index');
-Route::get('/dashboard', 'PostController@index');
+Route::get('/dashboard', 'JudulController@index');
 Route::get('/jumlah/judul', 'JudulController@hitungjudul');
 Route::get('/postsid/{id}', 'PostController@show');
 Route::get('/postsby/{usernya}', 'IndexController@postsby');
@@ -26,6 +26,8 @@ Route::get('/postcat/{categorynya}', 'IndexController@postcat');
 Route::resource('/kontak','ControllerKontak');
 
 Route::resource('dashboard/users', 'UserController');
+
+Route::resource('dashboard/sempro/jadwal', 'JadwalsemproController');
 
 Route::resource('dashboard/roles', 'RoleController');
 

@@ -19,8 +19,7 @@
     <link href="{{ asset('vendor/select2/select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/argon.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/lib/datatable/jquery.dataTables.css') }}">
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="https://use.fontawesome.com/9712be8772.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -28,8 +27,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="https://use.fontawesome.com/9712be8772.js"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     
 </head>
 <body>
@@ -170,6 +167,26 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sempro" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                                <i class="fas fa-book"></i>
+                                <span class="nav-link-text">Sempro</span>
+                            </a>
+
+                            <div class="collapse" id="sempro">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dashboard/sempro/jadwal">Jadwal Sempro</a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="/dashboard/sempro/mahasiswa">Ditolak</a>
+                                    </li>
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="/dashboard/judultanpastatus">Tanpa Status</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         @endrole
                         @hasrole('Dosen||Kaprodi')
                             <li class="nav-item">
@@ -259,6 +276,7 @@
 
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/argon.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
