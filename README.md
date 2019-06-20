@@ -8,11 +8,11 @@ A. Mahasiswa<br/>
   -> Ngajuin Judul<br/>
 B. Dosen<br/>
   -> Melihat daftar mahasiswa bimbingan<br/>
-  -> Ngedit judul mahasiswa bimbingan (otw)<br/>
+  -> Ngedit judul mahasiswa bimbingan<br/>
 C. Kaprodi<br/>
   -> Mengelola judul <br/>
-    -> Memberikan Dospem (otw)<br/>
-    -> Ngasih tau status judul ( ditolak/diterima) (otw)<br/>
+    -> Memberikan Dospem <br/>
+    -> Ngasih tau status judul ( ditolak/diterima) <br/>
 D. Admin<br/>
-  -> Mengelola judul (CRUD judul) (otw)<br/>
+  -> Mengelola judul (CRUD judul) <br/>
   -> Mengelola User (CRUD, Role User)
